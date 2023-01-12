@@ -1,3 +1,6 @@
+const File = require('../models/FileModel');
+
+
 const createFile = (req, res) => {
     const newFile = new File({
         name: req.file.originalname,
