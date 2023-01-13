@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "dwg2dxf": "^1.0.0",
+    "dxf-parser": "^1.1.2",
     "express": "^4.18.2",
+    "fs": "^0.0.1-security",
     "mongoose": "^6.8.3",
     "multer": "^1.4.5-lts.1"
   }

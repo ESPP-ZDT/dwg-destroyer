@@ -1,4 +1,5 @@
 const File = require('../models/FileModel');
+const FileConverter = require('./FileConverterController');
 
 
 const createFile = (req, res) => {
@@ -61,4 +62,25 @@ const deleteFile = (req, res) => {
         });
     });
 };
-module.exports = {createFile,getFile,updateFile,deleteFile}
+
+const convertDWGtoDXF = (req, res) => {
+    // Get the file name from the request
+    const fileName = req.file.originalname;
+    // specify the input and output file paths
+    const inputFile = `../files/input/${fileName}.dwg`;
+    const outputFile = `../files/output/converted_${fileName}.dxf`;
+    // convert the DWG file to DXF
+    FileConverter(inputFile, outputFile, (err) => {
+      if (err) {
+        console.error(err);
+        res.status(500).send({ message: "Error converting file" });
+      } else {
+        console.log(`Successfully converted ${inputFile} to ${outputFile}`);
+        res.send({ message: "DWG to DXF conversion successful!" });
+      }
+    });
+  };
+  
+
+
+module.exports = {createFile,getFile,updateFile,deleteFile,convertDWGtoDXF}
