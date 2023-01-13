@@ -9,7 +9,7 @@ router.post(
     "/upload",
     upload.single("file"),
     FileController.createFile,
-    FileController.convertDWGtoDXF()
+    FileController.convertDWGtoDXF
   );
   
 router.get("/file/:name", FileController.getFile);
